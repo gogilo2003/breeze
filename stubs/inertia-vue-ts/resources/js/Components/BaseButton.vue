@@ -13,7 +13,7 @@ const props = withDefaults(
     }>(),
     {
         variant: 'primary',
-        type: 'button',
+        type: 'submit',
         disabled: false,
         outline: false,
     },
