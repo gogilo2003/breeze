@@ -3,7 +3,7 @@ import BaseButton from './BaseButton.vue';
 </script>
 
 <template>
-    <BaseButton variant="primary">
+    <BaseButton variant="warning">
         <slot />
     </BaseButton>
 </template>
