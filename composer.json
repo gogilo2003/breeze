@@ -1,5 +1,5 @@
 {
-    "name": "laravel/breeze",
+    "name": "gogilo/breeze",
     "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
     "keywords": [
         "laravel",
