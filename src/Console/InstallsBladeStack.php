@@ -27,28 +27,28 @@ trait InstallsBladeStack
 
         // Controllers...
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Controllers'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/app/Http/Controllers', app_path('Http/Controllers'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/default/app/Http/Controllers', app_path('Http/Controllers'));
 
         // Requests...
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Requests'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/app/Http/Requests', app_path('Http/Requests'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/default/app/Http/Requests', app_path('Http/Requests'));
 
         // Views...
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/resources/views', resource_path('views'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/default/resources/views', resource_path('views'));
 
         if (! $this->option('dark')) {
             $this->removeDarkClasses((new Finder)
-                ->in(resource_path('views'))
-                ->name('*.blade.php')
-                ->notPath('livewire/welcome/navigation.blade.php')
-                ->notName('welcome.blade.php')
+                    ->in(resource_path('views'))
+                    ->name('*.blade.php')
+                    ->notPath('livewire/welcome/navigation.blade.php')
+                    ->notName('welcome.blade.php')
             );
         }
 
         // Components...
         (new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/app/View/Components', app_path('View/Components'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/default/app/View/Components', app_path('View/Components'));
 
         // Tests...
         if (! $this->installTests()) {
@@ -56,19 +56,23 @@ trait InstallsBladeStack
         }
 
         // Routes...
-        copy(__DIR__.'/../../stubs/default/routes/web.php', base_path('routes/web.php'));
-        copy(__DIR__.'/../../stubs/default/routes/auth.php', base_path('routes/auth.php'));
+        copy(__DIR__ . '/../../stubs/default/routes/web.php', base_path('routes/web.php'));
+        copy(__DIR__ . '/../../stubs/default/routes/auth.php', base_path('routes/auth.php'));
 
         // "Dashboard" Route...
         $this->replaceInFile('/home', '/dashboard', resource_path('views/welcome.blade.php'));
         $this->replaceInFile('Home', 'Dashboard', resource_path('views/welcome.blade.php'));
 
         // Tailwind / Vite...
-        copy(__DIR__.'/../../stubs/default/tailwind.config.js', base_path('tailwind.config.js'));
-        copy(__DIR__.'/../../stubs/default/postcss.config.js', base_path('postcss.config.js'));
-        copy(__DIR__.'/../../stubs/default/vite.config.js', base_path('vite.config.js'));
-        copy(__DIR__.'/../../stubs/default/resources/css/app.css', resource_path('css/app.css'));
-        copy(__DIR__.'/../../stubs/default/resources/js/app.js', resource_path('js/app.js'));
+        copy(__DIR__ . '/../../stubs/default/tailwind.config.js', base_path('tailwind.config.js'));
+        copy(__DIR__ . '/../../stubs/default/postcss.config.js', base_path('postcss.config.js'));
+        copy(__DIR__ . '/../../stubs/default/vite.config.js', base_path('vite.config.js'));
+        copy(__DIR__ . '/../../stubs/default/resources/css/app.css', resource_path('css/app.css'));
+        copy(__DIR__ . '/../../stubs/default/resources/js/app.js', resource_path('js/app.js'));
+        // Copy bootstrap entry if provided by stubs so Vite imports resolve.
+        if (file_exists(__DIR__ . '/../../stubs/default/resources/js/bootstrap.js')) {
+            copy(__DIR__ . '/../../stubs/default/resources/js/bootstrap.js', resource_path('js/bootstrap.js'));
+        }
 
         $this->components->info('Installing and building Node dependencies.');
 

@@ -265,8 +265,8 @@ class InstallCommand extends Command implements PromptsForMissingInput
             array_key_exists($configurationKey, $packages) ? $packages[$configurationKey] : [],
             $configurationKey
         );
-
         ksort($packages[$configurationKey]);
+                    // Removed the --with-all-dependencies flag
 
         file_put_contents(
             base_path('package.json'),
@@ -293,8 +293,8 @@ class InstallCommand extends Command implements PromptsForMissingInput
 
         file_put_contents(
             base_path('package.json'),
-            json_encode($content, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT).PHP_EOL
         );
+                    // Removed the --with-all-dependencies flag
     }
 
     /**
