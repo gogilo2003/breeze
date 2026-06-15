@@ -17,6 +17,7 @@ trait InstallsBladeStack
         // NPM Packages...
         $this->updateNodePackages(function ($packages) {
             return [
+                'axios' => '^1.5.0',
                 '@tailwindcss/forms' => '^0.5.2',
                 'alpinejs' => '^3.4.2',
                 'autoprefixer' => '^10.4.2',

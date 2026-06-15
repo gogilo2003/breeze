@@ -23,6 +23,7 @@ trait InstallsInertiaStacks
         $this->updateNodePackages(function ($packages) {
             return [
                 '@inertiajs/vue3' => '^2.0.0',
+                'axios' => '^1.5.0',
                 '@tailwindcss/forms' => '^0.5.3',
                 '@vitejs/plugin-vue' => '^6.0.0',
                 'autoprefixer' => '^10.4.12',
@@ -241,6 +242,7 @@ trait InstallsInertiaStacks
         $this->updateNodePackages(function ($packages) {
             return [
                 '@headlessui/react' => '^2.0.0',
+                'axios' => '^1.5.0',
                 '@inertiajs/react' => '^2.0.0',
                 '@tailwindcss/forms' => '^0.5.3',
                 '@vitejs/plugin-react' => '^4.2.0',
