@@ -22,14 +22,13 @@ trait InstallsInertiaStacks
         // NPM Packages...
         $this->updateNodePackages(function ($packages) {
             return [
-                '@inertiajs/vue3' => '^2.0.0',
-                'axios' => '^1.5.0',
-                '@tailwindcss/forms' => '^0.5.3',
-                '@vitejs/plugin-vue' => '^6.0.0',
-                'autoprefixer' => '^10.4.12',
-                'postcss' => '^8.4.31',
-                'tailwindcss' => '^3.2.1',
-                'vue' => '^3.4.0',
+                '@inertiajs/vue3' => '^3.4.0',
+                'axios' => '^1.18.0',
+                '@tailwindcss/forms' => '^0.5.11',
+                '@vitejs/plugin-vue' => '^6.0.7',
+                'postcss' => '^8.5.15',
+                'tailwindcss' => '^4.3.1',
+                'vue' => '^3.5.38',
             ] + $packages;
         });
 
@@ -242,13 +241,12 @@ trait InstallsInertiaStacks
         $this->updateNodePackages(function ($packages) {
             return [
                 '@headlessui/react' => '^2.0.0',
-                'axios' => '^1.5.0',
-                '@inertiajs/react' => '^2.0.0',
-                '@tailwindcss/forms' => '^0.5.3',
-                '@vitejs/plugin-react' => '^4.2.0',
-                'autoprefixer' => '^10.4.12',
-                'postcss' => '^8.4.31',
-                'tailwindcss' => '^3.2.1',
+                'axios' => '^1.18.0',
+                '@inertiajs/react' => '^3.0.0',
+                '@tailwindcss/forms' => '^0.5.11',
+                '@vitejs/plugin-react' => '^5.0.0',
+                'postcss' => '^8.5.15',
+                'tailwindcss' => '^4.3.1',
                 'react' => '^18.2.0',
                 'react-dom' => '^18.2.0',
             ] + $packages;
