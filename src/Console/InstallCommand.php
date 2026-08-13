@@ -35,6 +35,7 @@ class InstallCommand extends Command implements PromptsForMissingInput
                             {--ssr : Indicates if Inertia SSR support should be installed}
                             {--typescript : Indicates if TypeScript is preferred for the Inertia stack}
                             {--eslint : Indicates if ESLint with Prettier should be installed}
+                            {--routing=ziggy : The routing package to use (wayfinder, ziggy)}
                             {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
     /**
@@ -411,6 +412,15 @@ class InstallCommand extends Command implements PromptsForMissingInput
         $stack = $input->getArgument('stack');
 
         if (in_array($stack, ['react', 'vue'])) {
+            $input->setOption('routing', select(
+                label: 'Which routing package would you like to use?',
+                options: [
+                    'wayfinder' => 'Laravel Wayfinder',
+                    'ziggy' => 'Ziggy',
+                ],
+                default: 'ziggy',
+            ));
+
             collect(multiselect(
                 label: 'Would you like any optional features?',
                 options: [
