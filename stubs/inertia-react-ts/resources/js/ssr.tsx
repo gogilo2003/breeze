@@ -2,8 +2,8 @@ import { createInertiaApp } from '@inertiajs/react';
 import createServer from '@inertiajs/react/server';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import ReactDOMServer from 'react-dom/server';
-import { RouteName } from 'ziggy-js';
-import { route } from '../../vendor/tightenco/ziggy';
+import { RouteName } from 'wayfinder-js';
+import { route } from '../../vendor/laravel/wayfinder';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -20,10 +20,10 @@ createServer((page) =>
         setup: ({ App, props }) => {
             /* eslint-disable */
             // @ts-expect-error
-            global.route<RouteName> = (name, params, absolute) =>
+                global.route<RouteName> = (name, params, absolute) =>
                 route(name, params as any, absolute, {
-                    ...page.props.ziggy,
-                    location: new URL(page.props.ziggy.location),
+                    ...page.props.wayfinder,
+                    location: new URL(page.props.wayfinder.location),
                 });
             /* eslint-enable */
 

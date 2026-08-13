@@ -12,9 +12,16 @@
         "noEmit": true,
         "skipLibCheck": true,
         "paths": {
-            "@/*": ["./resources/js/*"],
-            "ziggy-js": ["./vendor/tightenco/ziggy"]
+            "@/*": [
+                "./resources/js/*"
+            ],
+            "wayfinder-js": [
+                "./vendor/laravel/wayfinder"
+            ]
         }
     },
-    "include": ["resources/js/**/*.ts", "resources/js/**/*.vue"]
+    "include": [
+        "resources/js/**/*.ts",
+        "resources/js/**/*.vue"
+    ]
 }

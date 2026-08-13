@@ -1,6 +1,6 @@
 import { PageProps as InertiaPageProps } from '@inertiajs/core';
 import { AxiosInstance } from 'axios';
-import { route as ziggyRoute } from 'ziggy-js';
+import { route as wayfinderRoute } from 'wayfinder-js';
 import { PageProps as AppPageProps } from './';
 
 declare global {
@@ -9,15 +9,15 @@ declare global {
     }
 
     /* eslint-disable no-var */
-    var route: typeof ziggyRoute;
+    var route: typeof wayfinderRoute;
 }
 
 declare module 'vue' {
     interface ComponentCustomProperties {
-        route: typeof ziggyRoute;
+        route: typeof wayfinderRoute;
     }
 }
 
 declare module '@inertiajs/core' {
-    interface PageProps extends InertiaPageProps, AppPageProps {}
+    interface PageProps extends InertiaPageProps, AppPageProps { }
 }

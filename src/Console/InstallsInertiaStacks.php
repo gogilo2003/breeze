@@ -15,7 +15,7 @@ trait InstallsInertiaStacks
     protected function installInertiaVueStack()
     {
         // Install Inertia...
-        if (! $this->requireComposerPackages(['inertiajs/inertia-laravel', 'laravel/sanctum', 'tightenco/ziggy'])) {
+        if (! $this->requireComposerPackages(['inertiajs/inertia-laravel', 'laravel/sanctum', 'laravel/wayfinder'])) {
             return 1;
         }
 
@@ -219,7 +219,7 @@ trait InstallsInertiaStacks
             $this->replaceInFile("input: 'resources/js/app.js',", "input: 'resources/js/app.js'," . PHP_EOL . "            ssr: 'resources/js/ssr.js',", base_path('vite.config.js'));
         }
 
-        $this->configureZiggyForSsr();
+        $this->configureWayfinderForSsr();
 
         $this->replaceInFile('vite build', 'vite build && vite build --ssr', base_path('package.json'));
         $this->replaceInFile('/node_modules', '/bootstrap/ssr' . PHP_EOL . '/node_modules', base_path('.gitignore'));
@@ -233,7 +233,7 @@ trait InstallsInertiaStacks
     protected function installInertiaReactStack()
     {
         // Install Inertia...
-        if (! $this->requireComposerPackages(['inertiajs/inertia-laravel', 'laravel/sanctum', 'tightenco/ziggy'])) {
+        if (! $this->requireComposerPackages(['inertiajs/inertia-laravel', 'laravel/sanctum', 'laravel/wayfinder'])) {
             return 1;
         }
 
@@ -437,7 +437,7 @@ trait InstallsInertiaStacks
             $this->configureReactHydrateRootForSsr(resource_path('js/app.jsx'));
         }
 
-        $this->configureZiggyForSsr();
+        $this->configureWayfinderForSsr();
 
         $this->replaceInFile('vite build', 'vite build && vite build --ssr', base_path('package.json'));
         $this->replaceInFile('/node_modules', '/bootstrap/ssr' . PHP_EOL . '/node_modules', base_path('.gitignore'));
@@ -480,11 +480,11 @@ trait InstallsInertiaStacks
     }
 
     /**
-     * Configure Ziggy for SSR.
+     * Configure Wayfinder for SSR.
      *
      * @return void
      */
-    protected function configureZiggyForSsr()
+    protected function configureWayfinderForSsr()
     {
         $this->replaceInFile(
             <<<'EOT'
@@ -492,7 +492,7 @@ trait InstallsInertiaStacks
             EOT,
             <<<'EOT'
             use Inertia\Middleware;
-            use Tighten\Ziggy\Ziggy;
+            use Wayfinder\Wayfinder;
             EOT,
             app_path('Http/Middleware/HandleInertiaRequests.php')
         );
@@ -507,8 +507,8 @@ trait InstallsInertiaStacks
                         'auth' => [
                             'user' => $request->user(),
                         ],
-                        'ziggy' => fn () => [
-                            ...(new Ziggy)->toArray(),
+                        'wayfinder' => fn () => [
+                            ...(new Wayfinder)->toArray(),
                             'location' => $request->url(),
                         ],
             EOT,
@@ -521,7 +521,7 @@ trait InstallsInertiaStacks
                 export interface User {
                 EOT,
                 <<<'EOT'
-                import { Config } from 'ziggy-js';
+                import { Config } from 'wayfinder-js';
 
                 export interface User {
                 EOT,
@@ -538,7 +538,7 @@ trait InstallsInertiaStacks
                     auth: {
                         user: User;
                     };
-                    ziggy: Config & { location: string };
+                    wayfinder: Config & { location: string };
                 EOT,
                 resource_path('js/types/index.d.ts')
             );
