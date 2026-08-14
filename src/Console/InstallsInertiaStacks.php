@@ -26,6 +26,7 @@ trait InstallsInertiaStacks
         // NPM Packages...
         $this->updateNodePackages(function ($packages) {
             return [
+                '@heroicons/vue' => '^2.2.0',
                 '@inertiajs/vue3' => '^3.4.0',
                 'axios' => '^1.18.0',
                 '@tailwindcss/forms' => '^0.5.11',
