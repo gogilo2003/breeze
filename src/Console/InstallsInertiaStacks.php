@@ -181,6 +181,8 @@ trait InstallsInertiaStacks
 
             if (file_exists(resource_path('js/bootstrap.js'))) {
                 rename(resource_path('js/bootstrap.js'), resource_path('js/bootstrap.ts'));
+            } elseif (! file_exists(resource_path('js/bootstrap.ts'))) {
+                copy(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/bootstrap.ts', resource_path('js/bootstrap.ts'));
             }
 
             $this->replaceInFile('"vite build', '"vue-tsc && vite build', base_path('package.json'));
@@ -438,6 +440,8 @@ trait InstallsInertiaStacks
 
             if (file_exists(resource_path('js/bootstrap.js'))) {
                 rename(resource_path('js/bootstrap.js'), resource_path('js/bootstrap.ts'));
+            } elseif (! file_exists(resource_path('js/bootstrap.ts'))) {
+                copy(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/bootstrap.ts', resource_path('js/bootstrap.ts'));
             }
 
             $this->replaceInFile('"vite build', '"tsc && vite build', base_path('package.json'));
