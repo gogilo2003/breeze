@@ -43,45 +43,6 @@ trait InstallsInertiaStacks
                     'vue-tsc' => '^2.0.24',
                 ] + $packages;
             });
-
-            $appStub = $this->option('routing') === 'ziggy'
-                ? __DIR__ . '/../../stubs/inertia-vue-ts-ziggy/resources/js/app.ts'
-                : __DIR__ . '/../../stubs/inertia-vue-ts/resources/js/app.ts';
-            copy($appStub, resource_path('js/app.ts'));
-
-            $tsconfigStub = $this->option('routing') === 'ziggy'
-                ? __DIR__ . '/../../stubs/inertia-vue-ts-ziggy/tsconfig.json'
-                : __DIR__ . '/../../stubs/inertia-vue-ts/tsconfig.json';
-            copy($tsconfigStub, base_path('tsconfig.json'));
-
-            if (file_exists(resource_path('js/app.js'))) {
-                unlink(resource_path('js/app.js'));
-            }
-
-            if (file_exists(resource_path('js/bootstrap.js'))) {
-                rename(resource_path('js/bootstrap.js'), resource_path('js/bootstrap.ts'));
-            }
-
-            $this->replaceInFile('"vite build', '"vue-tsc && vite build', base_path('package.json'));
-            $this->replaceInFile('.js', '.ts', base_path('vite.config.js'));
-            $this->replaceInFile('.js', '.ts', resource_path('views/app.blade.php'));
-        } else {
-            $appStub = $this->option('routing') === 'ziggy'
-                ? __DIR__ . '/../../stubs/inertia-vue-ziggy/resources/js/app.js'
-                : __DIR__ . '/../../stubs/inertia-vue/resources/js/app.js';
-            copy($appStub, resource_path('js/app.js'));
-
-            copy(__DIR__ . '/../../stubs/inertia-common/jsconfig.json', base_path('jsconfig.json'));
-            if ($this->option('routing') === 'ziggy') {
-                copy(__DIR__ . '/../../stubs/inertia-common-ziggy/jsconfig.json', base_path('jsconfig.json'));
-            }
-
-            if (file_exists(__DIR__ . '/../../stubs/inertia-vue/resources/js/bootstrap.js')) {
-                copy(__DIR__ . '/../../stubs/inertia-vue/resources/js/bootstrap.js', resource_path('js/bootstrap.js'));
-            }
-            if (file_exists(__DIR__ . '/../../stubs/inertia-vue/resources/js/bootstrap-helpers.js')) {
-                copy(__DIR__ . '/../../stubs/inertia-vue/resources/js/bootstrap-helpers.js', resource_path('js/bootstrap-helpers.js'));
-            }
         }
 
         if ($this->option('eslint')) {
