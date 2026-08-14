@@ -52,7 +52,6 @@ trait InstallsInertiaStacks
                 return [
                     'eslint' => '^9.0.0',
                     'eslint-plugin-vue' => '^10.10.0',
-                    '@vue/eslint-plugin' => '^4.2.0',
                     'eslint-config-prettier' => '^9.0.0',
                     'prettier' => '^3.9.6',
                     'prettier-plugin-organize-imports' => '^4.3.0',
