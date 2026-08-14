@@ -122,6 +122,7 @@ trait InstallsInertiaStacks
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/Pages', resource_path('js/Pages'));
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/types', resource_path('js/types'));
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/Composables', resource_path('js/Composables'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/Components/Icons', resource_path('js/Components/Icons'));
 
             if ($this->option('routing') === 'ziggy') {
                 copy(__DIR__ . '/../../stubs/inertia-vue-ts-ziggy/resources/js/types/global.d.ts', resource_path('js/types/global.d.ts'));
@@ -130,6 +131,8 @@ trait InstallsInertiaStacks
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue/resources/js/Components', resource_path('js/Components'));
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue/resources/js/Layouts', resource_path('js/Layouts'));
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue/resources/js/Pages', resource_path('js/Pages'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue/resources/js/Composables', resource_path('js/Composables'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue/resources/js/Components/Icons', resource_path('js/Components/Icons'));
         }
 
         if (! $this->option('dark')) {
@@ -383,6 +386,8 @@ trait InstallsInertiaStacks
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/Layouts', resource_path('js/Layouts'));
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/Pages', resource_path('js/Pages'));
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/types', resource_path('js/types'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/Components/Icons', resource_path('js/Components/Icons'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/hooks', resource_path('js/hooks'));
 
             if ($this->option('routing') === 'ziggy') {
                 copy(__DIR__ . '/../../stubs/inertia-react-ts-ziggy/resources/js/types/global.d.ts', resource_path('js/types/global.d.ts'));
@@ -391,6 +396,8 @@ trait InstallsInertiaStacks
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react/resources/js/Components', resource_path('js/Components'));
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react/resources/js/Layouts', resource_path('js/Layouts'));
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react/resources/js/Pages', resource_path('js/Pages'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react/resources/js/Components/Icons', resource_path('js/Components/Icons'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react/resources/js/hooks', resource_path('js/hooks'));
         }
 
         if (! $this->option('dark')) {

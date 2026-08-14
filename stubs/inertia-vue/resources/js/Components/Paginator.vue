@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="js">
 import { Link } from '@inertiajs/vue3'
 import { ref } from 'vue'
 import Icon from './Icons/Icon.vue';
