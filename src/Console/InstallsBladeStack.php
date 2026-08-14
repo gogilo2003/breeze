@@ -19,6 +19,7 @@ trait InstallsBladeStack
             return [
                 'axios' => '^1.18.0',
                 '@tailwindcss/forms' => '^0.5.11',
+                '@tailwindcss/postcss' => '^4.3.1',
                 'alpinejs' => '^3.4.2',
                 'postcss' => '^8.5.15',
                 'tailwindcss' => '^4.3.1',

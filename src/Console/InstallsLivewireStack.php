@@ -19,6 +19,7 @@ trait InstallsLivewireStack
         $this->updateNodePackages(function ($packages) {
             return [
                 '@tailwindcss/forms' => '^0.5.11',
+                '@tailwindcss/postcss' => '^4.3.1',
                 'postcss' => '^8.5.15',
                 'tailwindcss' => '^4.3.1',
             ] + $packages;
