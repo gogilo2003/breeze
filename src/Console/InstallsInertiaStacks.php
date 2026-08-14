@@ -39,6 +39,7 @@ trait InstallsInertiaStacks
         if ($this->option('typescript')) {
             $this->updateNodePackages(function ($packages) {
                 return [
+                    '/vue' => '^2.2.0',
                     'typescript' => '^5.6.3',
                     'vue-tsc' => '^2.0.24',
                 ] + $packages;
@@ -120,6 +121,7 @@ trait InstallsInertiaStacks
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/Layouts', resource_path('js/Layouts'));
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/Pages', resource_path('js/Pages'));
             (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/types', resource_path('js/types'));
+            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/Composables', resource_path('js/Composables'));
 
             if ($this->option('routing') === 'ziggy') {
                 copy(__DIR__ . '/../../stubs/inertia-vue-ts-ziggy/resources/js/types/global.d.ts', resource_path('js/types/global.d.ts'));
