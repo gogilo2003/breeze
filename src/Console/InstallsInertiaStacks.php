@@ -199,8 +199,15 @@ trait InstallsInertiaStacks
         copy(__DIR__ . '/../../stubs/inertia-vue/vite.config.js', base_path('vite.config.js'));
 
         if ($this->option('typescript')) {
-            copy(__DIR__ . '/../../stubs/inertia-vue-ts/tsconfig.json', base_path('tsconfig.json'));
-            copy(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/app.ts', resource_path('js/app.ts'));
+            $tsconfigStub = $this->option('routing') === 'ziggy'
+                ? __DIR__ . '/../../stubs/inertia-vue-ts-ziggy/tsconfig.json'
+                : __DIR__ . '/../../stubs/inertia-vue-ts/tsconfig.json';
+            copy($tsconfigStub, base_path('tsconfig.json'));
+
+            $appStub = $this->option('routing') === 'ziggy'
+                ? __DIR__ . '/../../stubs/inertia-vue-ts-ziggy/resources/js/app.ts'
+                : __DIR__ . '/../../stubs/inertia-vue-ts/resources/js/app.ts';
+            copy($appStub, resource_path('js/app.ts'));
 
             if (file_exists(resource_path('js/app.js'))) {
                 unlink(resource_path('js/app.js'));
@@ -214,11 +221,15 @@ trait InstallsInertiaStacks
             $this->replaceInFile('.js', '.ts', base_path('vite.config.js'));
             $this->replaceInFile('.js', '.ts', resource_path('views/app.blade.php'));
         } else {
-            copy(__DIR__ . '/../../stubs/inertia-common/jsconfig.json', base_path('jsconfig.json'));
-            if ($this->option('routing') === 'ziggy') {
-                copy(__DIR__ . '/../../stubs/inertia-common-ziggy/jsconfig.json', base_path('jsconfig.json'));
-            }
-            copy(__DIR__ . '/../../stubs/inertia-vue/resources/js/app.js', resource_path('js/app.js'));
+            $jsconfigStub = $this->option('routing') === 'ziggy'
+                ? __DIR__ . '/../../stubs/inertia-common-ziggy/jsconfig.json'
+                : __DIR__ . '/../../stubs/inertia-common/jsconfig.json';
+            copy($jsconfigStub, base_path('jsconfig.json'));
+
+            $appStub = $this->option('routing') === 'ziggy'
+                ? __DIR__ . '/../../stubs/inertia-vue-ziggy/resources/js/app.js'
+                : __DIR__ . '/../../stubs/inertia-vue/resources/js/app.js';
+            copy($appStub, resource_path('js/app.js'));
             // Copy bootstrap helper files if present
             if (file_exists(__DIR__ . '/../../stubs/inertia-vue/resources/js/bootstrap.js')) {
                 copy(__DIR__ . '/../../stubs/inertia-vue/resources/js/bootstrap.js', resource_path('js/bootstrap.js'));
@@ -449,7 +460,10 @@ trait InstallsInertiaStacks
         copy(__DIR__ . '/../../stubs/inertia-react/vite.config.js', base_path('vite.config.js'));
 
         if ($this->option('typescript')) {
-            copy(__DIR__ . '/../../stubs/inertia-react-ts/tsconfig.json', base_path('tsconfig.json'));
+            $tsconfigStub = $this->option('routing') === 'ziggy'
+                ? __DIR__ . '/../../stubs/inertia-react-ts-ziggy/tsconfig.json'
+                : __DIR__ . '/../../stubs/inertia-react-ts/tsconfig.json';
+            copy($tsconfigStub, base_path('tsconfig.json'));
             copy(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/app.tsx', resource_path('js/app.tsx'));
 
             if (file_exists(resource_path('js/bootstrap.js'))) {
